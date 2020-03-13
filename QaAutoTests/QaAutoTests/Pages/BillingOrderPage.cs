@@ -1,10 +1,12 @@
 ﻿using System;
+
 using NUnit.Allure.Steps;
 using NUnit.Framework;
 using OpenQA.Selenium;
+using SeleniumExtras.PageObjects;
+
 using QaAutoTests.DataStructures;
 using QaAutoTests.Extensions;
-using SeleniumExtras.PageObjects;
 
 namespace QaAutoTests.Pages
 {
@@ -154,7 +156,7 @@ namespace QaAutoTests.Pages
 
 		#region Complex methods
 
-		[AllureStep("Fill order form")]
+		[AllureStep("Submit order form")]
 		public BillingOrderPage SendOrderForm(
 			string firstName,
 			string lastName,

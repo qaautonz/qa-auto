@@ -80,9 +80,11 @@
     <Compile Include="Pages\AuthorizationPage.cs" />
     <Compile Include="Pages\BasePage.cs" />
     <Compile Include="Pages\BillingOrderPage.cs" />
+    <Compile Include="Pages\TestBlankFormPage.cs" />
     <Compile Include="Tests\BaseTest.cs" />
     <Compile Include="Tests\BillingOrderPageTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Tests\TestBlankFormPageTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <Analyzer Include="..\packages\AspectInjector.2.2.1\analyzers\dotnet\cs\AspectInjector.Analyzer.dll" />

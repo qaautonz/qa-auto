@@ -1,10 +1,11 @@
 ﻿using NUnit.Allure.Attributes;
 using NUnit.Framework;
+
 using QaAutoTests.DataStructures;
 using QaAutoTests.Tests;
 using QaAutoTests.Pages;
 
-namespace QaAutoTests
+namespace QaAutoTests.Tests
 {
 	[AllureSuite("Billing order feature")]
 	[Parallelizable(ParallelScope.Fixtures)]
@@ -16,7 +17,7 @@ namespace QaAutoTests
 			var authorizationPage = new AuthorizationPage(Driver);
 
 			authorizationPage
-				.GoToPage()
+				.GoToPage("http://qaauto.co.nz/billing-order-form/")
 				.LogIn("Testing");
 		}
 

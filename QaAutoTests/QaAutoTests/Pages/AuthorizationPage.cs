@@ -11,15 +11,16 @@ namespace QaAutoTests.Pages
 
 		#region Simple methods
 
-		public AuthorizationPage GoToPage()
+		[AllureStep("Open authorization page")]
+		public AuthorizationPage GoToPage(string url)
 		{
 			TestContext.WriteLine("Open authorization page");
-			Driver.Navigate().GoToUrl("http://qaauto.co.nz/billing-order-form/");
+			Driver.Navigate().GoToUrl(url);
 
 			return this;
 		}
 
-		[AllureStep("Fill password '{0}'")]
+		[AllureStep("Fill password")]
 		public AuthorizationPage FillPassword(string password)
 		{
 			TestContext.WriteLine($"Fill password '{password}'");
