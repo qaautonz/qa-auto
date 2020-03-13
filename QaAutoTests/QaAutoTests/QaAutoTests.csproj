@@ -1,0 +1,109 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\NUnit.3.12.0\build\NUnit.props" Condition="Exists('..\packages\NUnit.3.12.0\build\NUnit.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{27A01569-1FE8-4413-BF95-A3CCFCC75020}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>QaAutoTests</RootNamespace>
+    <AssemblyName>QaAutoTests</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Allure.Commons, Version=2.3.64.1, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Allure.Commons.2.3.64.1\lib\net45\Allure.Commons.dll</HintPath>
+    </Reference>
+    <Reference Include="AspectInjector.Broker, Version=2.2.1.0, Culture=neutral, PublicKeyToken=a29e12442a3d3609, processorArchitecture=MSIL">
+      <HintPath>..\packages\AspectInjector.2.2.1\lib\netstandard2.0\AspectInjector.Broker.dll</HintPath>
+    </Reference>
+    <Reference Include="MimeTypesMap, Version=1.0.3.0, Culture=neutral, PublicKeyToken=1b320cc08ad5aa89, processorArchitecture=MSIL">
+      <HintPath>..\packages\MimeTypesMap.1.0.3\lib\net45\MimeTypesMap.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.11.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="NUnit.Allure, Version=1.0.6.2, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\NUnit.Allure.1.0.6.2\lib\net45\NUnit.Allure.dll</HintPath>
+    </Reference>
+    <Reference Include="NUnit.Allure.Steps, Version=1.0.6.2, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\NUnit.Allure.Steps.1.0.6.2\lib\netstandard2.0\NUnit.Allure.Steps.dll</HintPath>
+    </Reference>
+    <Reference Include="nunit.framework, Version=3.12.0.0, Culture=neutral, PublicKeyToken=2638cd05610744eb, processorArchitecture=MSIL">
+      <HintPath>..\packages\NUnit.3.12.0\lib\net45\nunit.framework.dll</HintPath>
+    </Reference>
+    <Reference Include="SeleniumExtras.PageObjects, Version=3.11.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\DotNetSeleniumExtras.PageObjects.3.11.0\lib\net45\SeleniumExtras.PageObjects.dll</HintPath>
+    </Reference>
+    <Reference Include="SeleniumExtras.WaitHelpers, Version=3.11.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\DotNetSeleniumExtras.WaitHelpers.3.11.0\lib\net45\SeleniumExtras.WaitHelpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WebDriver, Version=3.141.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Selenium.WebDriver.3.141.0\lib\net45\WebDriver.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="DataStructures\State.cs" />
+    <Compile Include="Extensions\WebDriverExtensions.cs" />
+    <Compile Include="Pages\AuthorizationPage.cs" />
+    <Compile Include="Pages\BasePage.cs" />
+    <Compile Include="Pages\BillingOrderPage.cs" />
+    <Compile Include="Tests\BaseTest.cs" />
+    <Compile Include="Tests\BillingOrderPageTests.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Analyzer Include="..\packages\AspectInjector.2.2.1\analyzers\dotnet\cs\AspectInjector.Analyzer.dll" />
+    <Analyzer Include="..\packages\AspectInjector.2.2.1\analyzers\dotnet\cs\AspectInjector.Broker.dll" />
+    <Analyzer Include="..\packages\AspectInjector.2.2.1\analyzers\dotnet\cs\AspectInjector.Rules.dll" />
+    <Analyzer Include="..\packages\AspectInjector.2.2.1\analyzers\dotnet\cs\FluentIL.Common.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="allureConfig.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="app.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>Данный проект ссылается на пакеты NuGet, отсутствующие на этом компьютере. Используйте восстановление пакетов NuGet, чтобы скачать их.  Дополнительную информацию см. по адресу: http://go.microsoft.com/fwlink/?LinkID=322105. Отсутствует следующий файл: {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\NUnit.3.12.0\build\NUnit.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\NUnit.3.12.0\build\NUnit.props'))" />
+    <Error Condition="!Exists('..\packages\AspectInjector.2.2.1\build\netstandard2.0\AspectInjector.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\AspectInjector.2.2.1\build\netstandard2.0\AspectInjector.targets'))" />
+  </Target>
+  <Import Project="..\packages\AspectInjector.2.2.1\build\netstandard2.0\AspectInjector.targets" Condition="Exists('..\packages\AspectInjector.2.2.1\build\netstandard2.0\AspectInjector.targets')" />
+</Project>
