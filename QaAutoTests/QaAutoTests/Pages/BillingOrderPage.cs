@@ -1,7 +1,6 @@
 ﻿using System;
 
 using NUnit.Allure.Steps;
-using NUnit.Framework;
 using OpenQA.Selenium;
 using SeleniumExtras.PageObjects;
 
@@ -19,7 +18,7 @@ namespace QaAutoTests.Pages
 		[AllureStep("Fill first name")]
 		public BillingOrderPage FillFirstName(string name)
 		{
-			TestContext.WriteLine($"Fill first name - '{name}'");
+			CustomTestContext.WriteLine($"Fill first name - '{name}'");
 			FirstNameInput.SendKeys(name);
 
 			return this;
@@ -28,7 +27,7 @@ namespace QaAutoTests.Pages
 		[AllureStep("Fill last name")]
 		public BillingOrderPage FillLastName(string name)
 		{
-			TestContext.WriteLine($"Fill last name - '{name}'");
+			CustomTestContext.WriteLine($"Fill last name - '{name}'");
 			LastNameInput.SendKeys(name);
 
 			return this;
@@ -37,7 +36,7 @@ namespace QaAutoTests.Pages
 		[AllureStep("Fill email")]
 		public BillingOrderPage FillEmail(string email)
 		{
-			TestContext.WriteLine($"Fill email - '{email}'");
+			CustomTestContext.WriteLine($"Fill email - '{email}'");
 			EmailInput.SendKeys(email);
 
 			return this;
@@ -46,7 +45,7 @@ namespace QaAutoTests.Pages
 		[AllureStep("Fill phone")]
 		public BillingOrderPage FillPhone(string phone)
 		{
-			TestContext.WriteLine($"Fill phone - '{phone}'");
+			CustomTestContext.WriteLine($"Fill phone - '{phone}'");
 			PhoneInput.SendKeys(phone);
 
 			return this;
@@ -55,7 +54,7 @@ namespace QaAutoTests.Pages
 		[AllureStep("Fill address line 1")]
 		public BillingOrderPage FillAddressLine1(string address)
 		{
-			TestContext.WriteLine($"Fill address line 1 - '{address}'");
+			CustomTestContext.WriteLine($"Fill address line 1 - '{address}'");
 			AddressLine1Input.SendKeys(address);
 
 			return this;
@@ -64,7 +63,7 @@ namespace QaAutoTests.Pages
 		[AllureStep("Fill address line 2")]
 		public BillingOrderPage FillAddressLine2(string address)
 		{
-			TestContext.WriteLine($"Fill address line 2 - '{address}'");
+			CustomTestContext.WriteLine($"Fill address line 2 - '{address}'");
 			AddressLine2Input.SendKeys(address);
 
 			return this;
@@ -73,7 +72,7 @@ namespace QaAutoTests.Pages
 		[AllureStep("Fill city")]
 		public BillingOrderPage FillCity(string city)
 		{
-			TestContext.WriteLine($"Fill city - '{city}'");
+			CustomTestContext.WriteLine($"Fill city - '{city}'");
 			CityInput.SendKeys(city);
 
 			return this;
@@ -82,7 +81,7 @@ namespace QaAutoTests.Pages
 		[AllureStep("Fill zip code")]
 		public BillingOrderPage FillZipCode(string code)
 		{
-			TestContext.WriteLine($"Fill code - '{code}'");
+			CustomTestContext.WriteLine($"Fill code - '{code}'");
 			ZipCodeInput.SendKeys(code);
 
 			return this;
@@ -91,7 +90,7 @@ namespace QaAutoTests.Pages
 		[AllureStep("Click state dropdown")]
 		public BillingOrderPage ClickStateSelect()
 		{
-			TestContext.WriteLine("Click state dropdown");
+			CustomTestContext.WriteLine("Click state dropdown");
 			StateSelect.Click();
 
 			return this;
@@ -100,7 +99,7 @@ namespace QaAutoTests.Pages
 		[AllureStep("Click state option")]
 		public BillingOrderPage ClickStateOption(State state)
 		{
-			TestContext.WriteLine($"Click state option - '{state}'");
+			CustomTestContext.WriteLine($"Click state option - '{state}'");
 			StateOption = Driver.FindElement(By.XPath(STATE_OPTION.Replace("{code}", state.ToString())));
 			StateOption.Click();
 
@@ -110,7 +109,7 @@ namespace QaAutoTests.Pages
 		[AllureStep("Fill comment")]
 		public BillingOrderPage FillComment(string comment)
 		{
-			TestContext.WriteLine($"Fill comment - '{comment}'");
+			CustomTestContext.WriteLine($"Fill comment - '{comment}'");
 			CommentInput.SendKeys(comment);
 
 			return this;
@@ -119,7 +118,7 @@ namespace QaAutoTests.Pages
 		[AllureStep("Click first item radio button")]
 		public BillingOrderPage ClickFirstItemRadioButton()
 		{
-			TestContext.WriteLine("Click first item radio button");
+			CustomTestContext.WriteLine("Click first item radio button");
 			FirstItemRadioButton.Click();
 
 			return this;
@@ -128,7 +127,7 @@ namespace QaAutoTests.Pages
 		[AllureStep("Click second item radio button")]
 		public BillingOrderPage ClickSecondItemRadioButton()
 		{
-			TestContext.WriteLine("Click second item radio button");
+			CustomTestContext.WriteLine("Click second item radio button");
 			SecondItemRadioButton.Click();
 
 			return this;
@@ -137,7 +136,7 @@ namespace QaAutoTests.Pages
 		[AllureStep("Click third item radio button")]
 		public BillingOrderPage ClickThirdItemRadioButton()
 		{
-			TestContext.WriteLine("Click third item radio button");
+			CustomTestContext.WriteLine("Click third item radio button");
 			ThirdItemRadioButton.Click();
 
 			return this;
@@ -146,7 +145,7 @@ namespace QaAutoTests.Pages
 		[AllureStep("Click submit button")]
 		public BillingOrderPage ClickSubmitButton()
 		{
-			TestContext.WriteLine("Click submit button");
+			CustomTestContext.WriteLine("Click submit button");
 			SubmitButton.Click();
 
 			return this;
@@ -209,7 +208,7 @@ namespace QaAutoTests.Pages
 		[AllureStep("Check success message displayed")]
 		public bool IsSuccessMessageDisplayed()
 		{
-			TestContext.WriteLine("Check success message displayed");
+			CustomTestContext.WriteLine("Check success message displayed");
 
 			return Driver.WaitUntilElementIsDisplay(By.XPath(SUCCESS_MESSAGE));
 		}

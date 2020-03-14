@@ -20,6 +20,7 @@ namespace QaAutoTests.Tests
 		public void OneTimeSetUp()
 		{
 			Driver = new ChromeDriver();
+			Driver.Manage().Window.Maximize();
 		}
 
 		[OneTimeTearDown]

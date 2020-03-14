@@ -76,6 +76,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DataStructures\State.cs" />
+    <Compile Include="Extensions\CustomTestContext.cs" />
     <Compile Include="Extensions\WebDriverExtensions.cs" />
     <Compile Include="Pages\AuthorizationPage.cs" />
     <Compile Include="Pages\BasePage.cs" />

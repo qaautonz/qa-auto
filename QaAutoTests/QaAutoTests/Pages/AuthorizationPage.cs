@@ -1,6 +1,6 @@
 ﻿using NUnit.Allure.Steps;
-using NUnit.Framework;
 using OpenQA.Selenium;
+using QaAutoTests.Extensions;
 using SeleniumExtras.PageObjects;
 
 namespace QaAutoTests.Pages
@@ -14,7 +14,7 @@ namespace QaAutoTests.Pages
 		[AllureStep("Open authorization page")]
 		public AuthorizationPage GoToPage(string url)
 		{
-			TestContext.WriteLine("Open authorization page");
+			CustomTestContext.WriteLine("Open authorization page");
 			Driver.Navigate().GoToUrl(url);
 
 			return this;
@@ -23,7 +23,7 @@ namespace QaAutoTests.Pages
 		[AllureStep("Fill password")]
 		public AuthorizationPage FillPassword(string password)
 		{
-			TestContext.WriteLine($"Fill password '{password}'");
+			CustomTestContext.WriteLine($"Fill password '{password}'");
 			PasswordInput.SendKeys(password);
 
 			return this;
@@ -32,7 +32,7 @@ namespace QaAutoTests.Pages
 		[AllureStep("Click submit button")]
 		public BillingOrderPage ClickSubmitButton()
 		{
-			TestContext.WriteLine("Click submit button");
+			CustomTestContext.WriteLine("Click submit button");
 			SubmitButton.Click();
 
 			return new BillingOrderPage(Driver);

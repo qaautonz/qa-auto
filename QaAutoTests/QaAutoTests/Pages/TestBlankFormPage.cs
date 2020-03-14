@@ -1,5 +1,4 @@
 ﻿using NUnit.Allure.Steps;
-using NUnit.Framework;
 using OpenQA.Selenium;
 using SeleniumExtras.PageObjects;
 
@@ -16,7 +15,7 @@ namespace QaAutoTests.Pages
 		[AllureStep("Fill first name")]
 		public TestBlankFormPage FillFirstName(string name)
 		{
-			TestContext.WriteLine($"Fill first name - '{name}'");
+			CustomTestContext.WriteLine($"Fill first name - '{name}'");
 			FirstNameInput.SendKeys(name);
 
 			return this;
@@ -25,7 +24,7 @@ namespace QaAutoTests.Pages
 		[AllureStep("Fill last name")]
 		public TestBlankFormPage FillLastName(string name)
 		{
-			TestContext.WriteLine($"Fill last name - '{name}'");
+			CustomTestContext.WriteLine($"Fill last name - '{name}'");
 			LastNameInput.SendKeys(name);
 
 			return this;
@@ -34,7 +33,7 @@ namespace QaAutoTests.Pages
 		[AllureStep("Fill email")]
 		public TestBlankFormPage FillEmail(string email)
 		{
-			TestContext.WriteLine($"Fill email - '{email}'");
+			CustomTestContext.WriteLine($"Fill email - '{email}'");
 			EmailInput.SendKeys(email);
 
 			return this;
@@ -43,7 +42,7 @@ namespace QaAutoTests.Pages
 		[AllureStep("Fill comment")]
 		public TestBlankFormPage FillComment(string comment)
 		{
-			TestContext.WriteLine($"Fill comment - '{comment}'");
+			CustomTestContext.WriteLine($"Fill comment - '{comment}'");
 			CommentInput.SendKeys(comment);
 
 			return this;
@@ -52,7 +51,7 @@ namespace QaAutoTests.Pages
 		[AllureStep("Click submit button")]
 		public TestBlankFormPage ClickSubmitButton()
 		{
-			TestContext.WriteLine("Click submit button");
+			CustomTestContext.WriteLine("Click submit button");
 			SubmitButton.Click();
 
 			return this;
@@ -85,7 +84,7 @@ namespace QaAutoTests.Pages
 		[AllureStep("Check success message displayed")]
 		public bool IsSuccessMessageDisplayed()
 		{
-			TestContext.WriteLine("Check success message displayed");
+			CustomTestContext.WriteLine("Check success message displayed");
 
 			return Driver.WaitUntilElementIsDisplay(By.XPath(SUCCESS_MESSAGE));
 		}

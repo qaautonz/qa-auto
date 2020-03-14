@@ -1,9 +1,9 @@
 ﻿{
-  "allure": {
-    "directory": "allure-results",
-    "links": [
-      "https://example.org/{issue}",
-      "https://example.org/{tms}"
-    ]
-  }
+	"allure": {
+		"directory": "allure-results",
+		"links": [
+			"https://bugs.chromium.org/p/chromedriver/issues/detail?id={issue}",
+			"https://github.com/nunit/docs/wiki/{tms}"
+		]
+	}
 }

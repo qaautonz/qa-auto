@@ -1,13 +1,13 @@
-﻿using NUnit.Allure.Attributes;
+﻿using Allure.Commons;
+using NUnit.Allure.Attributes;
 using NUnit.Framework;
 
 using QaAutoTests.DataStructures;
-using QaAutoTests.Tests;
 using QaAutoTests.Pages;
 
 namespace QaAutoTests.Tests
 {
-	[AllureSuite("Billing order feature")]
+	[AllureSuite("Billing order tests")]
 	[Parallelizable(ParallelScope.Fixtures)]
 	public class BillingOrderPageTests : BaseTest
 	{
@@ -21,7 +21,9 @@ namespace QaAutoTests.Tests
 				.LogIn("Testing");
 		}
 
-		[TestCase("John", "Doe", "email@gmail.com", "8-800-2990-555", "Address Line 1", "Address Line 2", "City", "63923", State.AK, 1, "Comment")]
+		[AllureTms("TestCaseSource-Attribute")]
+		[AllureSeverity(SeverityLevel.blocker)]
+		[TestCaseSource("FormData")]
 		public void SubmitFormWithAllParametersTest(string firstName, string lastName, string email,
 			string phone, string addresLine1, string addresLine2, string city, string zipCode, State state, int itemNumber, string comment)
 		{
@@ -43,5 +45,15 @@ namespace QaAutoTests.Tests
 			Assert.IsTrue(billingOrderPage.IsSuccessMessageDisplayed(),
 				"Error: there is no success message on the page");
 		}
+
+		static object[] FormData =
+		{
+			new object[] { "John", "Smith", "email@gmail.com", "8-800-2990-555", "Address Line 1", "Address Line 2", "City", "63923", State.AK, 1, "Simple last name" },
+			new object[] { "John", "O'Brien", "email@gmail.com", "8-800-2990-555", "Address Line 1", "Address Line 2", "City", "63923", State.DE, 2, "Last name with apostrophe" },
+			new object[] { "John", "Smith-Klein", "email@gmail.com", "8-800-2990-555", "Address Line 1", "Address Line 2", "City", "63923", State.NE, 3, "Last name with hypen" },
+			new object[] { "John", "Van Kempen", "email@gmail.com", "8-800-2990-555", "Address Line 1", "Address Line 2", "City", "63923", State.OH, 1, "Last name with multiple words" },
+			new object[] { "John", "Li", "email@gmail.com", "8-800-2990-555", "Address Line 1", "Address Line 2", "City", "63923", State.WV, 2, "Short last name" },
+			new object[] { "John", "Wolfeschlegelsteinhausenbergerdorff", "email@gmail.com", "8-800-2990-555", "Address Line 1", "Address Line 2", "City", "63923", State.WY, 3, "Long last name" }
+		};
 	}
 }
