@@ -6,6 +6,7 @@ using SeleniumExtras.PageObjects;
 
 using QaAutoTests.DataStructures;
 using QaAutoTests.Extensions;
+using QaAutoTests.DataObjects;
 
 namespace QaAutoTests.Pages
 {
@@ -78,7 +79,9 @@ namespace QaAutoTests.Pages
 			return this;
 		}
 
-		[AllureStep("Fill zip code")]
+      
+
+        [AllureStep("Fill zip code")]
 		public BillingOrderPage FillZipCode(string code)
 		{
 			CustomTestContext.WriteLine($"Fill code - '{code}'");
@@ -151,11 +154,46 @@ namespace QaAutoTests.Pages
 			return this;
 		}
 
-		#endregion
+        #endregion
 
-		#region Complex methods
+        #region Complex methods
 
-		[AllureStep("Submit order form")]
+        public BillingOrderPage SendOrderForm(BillingOrder billingOrder)
+        {
+            FillFirstName(billingOrder.FirstName);
+            FillLastName(billingOrder.LastName);
+            FillEmail(billingOrder.Email);
+            FillPhone(billingOrder.Phone);
+            FillAddressLine1(billingOrder.AddressLine1);
+            FillAddressLine2(billingOrder.AddressLine2);
+            FillCity(billingOrder.City);
+            FillZipCode(billingOrder.ZipCode);
+            ClickStateSelect();
+            ClickStateOption(billingOrder.State);
+
+            switch (billingOrder.ItemNumber)
+            {
+                case 1:
+                    ClickFirstItemRadioButton();
+                    break;
+                case 2:
+                    ClickSecondItemRadioButton();
+                    break;
+                case 3:
+                    ClickThirdItemRadioButton();
+                    break;
+                default:
+                    throw new Exception("Item number must be 1,2 or 3");
+            }
+
+            FillComment(billingOrder.Comment);
+            ClickSubmitButton();
+
+            return this;
+        }
+
+
+        [AllureStep("Submit order form")]
 		public BillingOrderPage SendOrderForm(
 			string firstName,
 			string lastName,

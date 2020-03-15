@@ -1,7 +1,8 @@
-﻿using Allure.Commons;
+﻿using System;
+using Allure.Commons;
 using NUnit.Allure.Attributes;
 using NUnit.Framework;
-
+using QaAutoTests.DataObjects;
 using QaAutoTests.DataStructures;
 using QaAutoTests.Pages;
 
@@ -46,7 +47,27 @@ namespace QaAutoTests.Tests
 				"Error: there is no success message on the page");
 		}
 
-		static object[] FormData =
+        [AllureTms("TestCaseSource-Attribute")]
+        [AllureSeverity(SeverityLevel.blocker)]
+        [TestCaseSource("FormData1")]
+        public void SubmitFormWithAllParametersTest_With_DataSets(string i, BillingOrder billingOrder)
+        {
+            var billingOrderPage = new BillingOrderPage(Driver);
+            billingOrderPage.SendOrderForm(billingOrder);
+            Assert.IsTrue(billingOrderPage.IsSuccessMessageDisplayed(),
+                "Error: there is no success message on the page");
+        }
+
+        static object[] FormData1 =
+        {
+             
+            new object[] {"Valid DataSet - 1",new BillingOrder(){FirstName = "John", LastName = "Smith", Email = "email@gmail.com", Phone = "8-800-2990-555", AddressLine1 = "Address Line 1", AddressLine2 =  "Address Line 2", City = "City", ZipCode = "63923", State = State.AK, ItemNumber = 1, Comment = "Simple last name" } },
+            new object[] {"Valid DataSet - 2",new BillingOrder(){FirstName = "John", LastName = "smith1", Email = "email@gmail.com", Phone = "8-800-2990-555", AddressLine1 = "Address Line 1", AddressLine2 =  "Address Line 2", City = "City", ZipCode = "63923", State = State.AK, ItemNumber = 1, Comment = "Simple last name" } },
+            new object[] { "Valid DataSet - 3", new BillingOrder(){FirstName = "john1",LastName = "smith2", Email = "email@gmail.com", Phone = "8-800-2990-555", AddressLine1 = "Address Line 1", AddressLine2 =  "Address Line 2", City = "City", ZipCode = "63923", State = State.AK, ItemNumber = 1, Comment = "Simple last name" } },
+
+        };
+
+        static object[] FormData =
 		{
 			new object[] { "John", "Smith", "email@gmail.com", "8-800-2990-555", "Address Line 1", "Address Line 2", "City", "63923", State.AK, 1, "Simple last name" },
 			new object[] { "John", "O'Brien", "email@gmail.com", "8-800-2990-555", "Address Line 1", "Address Line 2", "City", "63923", State.DE, 2, "Last name with apostrophe" },
